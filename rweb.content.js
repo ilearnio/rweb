@@ -25,20 +25,20 @@ if ( document.documentElement && document.documentElement.nodeName == 'HTML' && 
 		if ( !meta.lastDownload || meta.lastDownload < Date.now() - rweb.MUST_DOWNLOAD_EVERY_N_MINUTES * 60000 ) {
 			if ( !meta.downloadingSince || meta.downloadingSince < Date.now() - 10000 ) {
 				if ( !meta.dirty ) {
-					console.log('[RWeb] WILL START AUTO-DOWNLOAD NOW! See background script for log.');
+					// console.log('[RWeb] WILL START AUTO-DOWNLOAD NOW! See background script for log.');
 					rweb.browser.runtime.sendMessage({forceAutoDownload: true}, function(response) {
 						if (response && response.imported) {
-							console.log('[RWeb] DOWNLOADED SITES!');
+							// console.log('[RWeb] DOWNLOADED SITES!');
 						}
 						else {
-							console.warn('[RWeb] NOT DOWNLOADED...', response);
+							// console.warn('[RWeb] NOT DOWNLOADED...', response);
 						}
 					});
 				}
 				else {
 					if (meta.lastDownload) {
 						// Only nofity if this is news. If there has NEVER been a download, we're probably not connected.
-						console.warn("[RWeb] NOT STARTING AUTO-DOWNLOAD, because local state is dirty. Go to options page to fix.");
+						// console.warn("[RWeb] NOT STARTING AUTO-DOWNLOAD, because local state is dirty. Go to options page to fix.");
 					}
 				}
 			}
